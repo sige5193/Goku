@@ -58,7 +58,7 @@
           </p>
           <p>description od proejct sd, bf pdf fbyfog asdfasdf asdf adsf asdf asdf adsf adsf ba dfua idfa hdf adf adf adsf adf adsf asdf asdf asdf asd fuewrqywer qwer qewr we</p>
           
-          <table class="table table-striped table-bordered table-hover">
+          <table class="table table-bordered table-hover">
             <caption>Events</caption>
             <thead>
               <tr>
@@ -74,8 +74,34 @@
                 <td>sport.published</td>
                 <td>trigged after done publish sport on suanhetao.</td>
                 <td>
-                  <button class="btn btn-default btn-xs">View</button>
-                  <button class="btn btn-default btn-xs">Edit</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event">View</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
+                  <button class="btn btn-default btn-xs">Delete</button>
+                  <button class="btn btn-default btn-xs">Enable/Disable</button>
+                  <button class="btn btn-default btn-xs">History</button>
+                  <button class="btn btn-default btn-xs">Processors</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Sport Published</td>
+                <td>sport.published</td>
+                <td>trigged after done publish sport on suanhetao.</td>
+                <td>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event">View</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
+                  <button class="btn btn-default btn-xs">Delete</button>
+                  <button class="btn btn-default btn-xs">Enable/Disable</button>
+                  <button class="btn btn-default btn-xs">History</button>
+                  <button class="btn btn-default btn-xs">Processors</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Sport Published</td>
+                <td>sport.published</td>
+                <td>trigged after done publish sport on suanhetao.</td>
+                <td>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event">View</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
                   <button class="btn btn-default btn-xs">Delete</button>
                   <button class="btn btn-default btn-xs">Enable/Disable</button>
                   <button class="btn btn-default btn-xs">History</button>
@@ -84,7 +110,7 @@
               </tr>
             </tbody>
           </table>
-          <p><button class="btn btn-default btn-xs">Add Event</button></p>
+          <p><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Add Event</button></p>
         </div>
       </div>
     </div>
@@ -115,6 +141,60 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+
+    <!-- Dialog for creating new event -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="dlg-new-event">
+      <form>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit Event</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Event Name">
+              </div>
+              <div class="form-group">
+                <label>Id</label>
+                <input type="text" class="form-control" placeholder="Event Id">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control"></textarea>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+
+    <!-- Dialog for view event -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="dlg-view-event">
+      <form>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Event Information</h4>
+          </div>
+          <div class="modal-body">
+              <p>Name: Sport Published</p>
+              <p>Id: sport.published</p>
+              <p>Description : sdf asdf ad fasdf adsf adsf asdf awe fa asdf asdf </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
