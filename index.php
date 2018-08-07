@@ -78,8 +78,8 @@
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
                   <button class="btn btn-default btn-xs">Delete</button>
                   <button class="btn btn-default btn-xs">Enable/Disable</button>
-                  <button class="btn btn-default btn-xs">History</button>
-                  <button class="btn btn-default btn-xs">Processors</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-history">History</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-processor">Processors</button>
                 </td>
               </tr>
               <tr>
@@ -91,8 +91,8 @@
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
                   <button class="btn btn-default btn-xs">Delete</button>
                   <button class="btn btn-default btn-xs">Enable/Disable</button>
-                  <button class="btn btn-default btn-xs">History</button>
-                  <button class="btn btn-default btn-xs">Processors</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-history">History</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-processor">Processors</button>
                 </td>
               </tr>
               <tr>
@@ -104,8 +104,8 @@
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-new-event">Edit</button>
                   <button class="btn btn-default btn-xs">Delete</button>
                   <button class="btn btn-default btn-xs">Enable/Disable</button>
-                  <button class="btn btn-default btn-xs">History</button>
-                  <button class="btn btn-default btn-xs">Processors</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-history">History</button>
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#dlg-view-event-processor">Processors</button>
                 </td>
               </tr>
             </tbody>
@@ -137,6 +137,21 @@
                 <label>Description</label>
                 <textarea class="form-control"></textarea>
               </div>
+              <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                    Public - <small> project can be serached and viewed. </small>
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Private - <small> only porject owner is able to see the project </small>
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label> <input type="checkbox"> application required for register processor </label>
+                </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -200,7 +215,144 @@
       </div>
       </form>
     </div>
-
+    
+    <!-- Dialog for event history -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="dlg-view-event-history">
+      <form>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Event History</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Result</th>
+                  <th>Duration</th>
+                  <th>Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2018-12-15 22:22:22</td>
+                  <td>Success : 10; Failed : 0 </td>
+                  <td>10h</td>
+                  <td>
+                    <button class="btn btn-default btn-xs">Show Parameters</button>
+                    <button class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#dlg-view-event-result">Show Results</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    
+    <!-- Dialog for event history -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="dlg-view-event-result">
+      <form>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Event Result</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Processor</th>
+                  <th>Status</th>
+                  <th>Message</th>
+                  <th>Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2018-12-15 22:22:22</td>
+                  <td>Suanhetao SMS</td>
+                  <td>Success</td>
+                  <td>10 poepoefsd afsd asd ads </td>
+                  <td>
+                    <button class="btn btn-default btn-xs">Retry</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2018-12-15 22:22:22</td>
+                  <td>Suanhetao Sina Weibo</td>
+                  <td>Failed</td>
+                  <td>Openid expired</td>
+                  <td>
+                    <button class="btn btn-default btn-xs">Retry</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#dlg-view-event-history">Close</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    
+    
+     <!-- Dialog for view event -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="dlg-view-event-processor">
+      <form>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Event Processors</h4>
+          </div>
+          <div class="modal-body">
+          
+          <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Processor</th>
+                  <th>Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Michael</td>
+                  <td>Suanhetao SMS</td>
+                  <td>
+                    <button class="btn btn-default btn-xs">Disable/Enable</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Michael</td>
+                  <td>Suanhetao SMS</td>
+                  <td>
+                    <button class="btn btn-default btn-xs">Disable/Enable</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
 
   </body>
 </html>
