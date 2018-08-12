@@ -1,8 +1,8 @@
 <?php
-namespace X\Module\Web\Action\Project;
+namespace X\Module\Web\Action\Processor;
 use X\Module\Web\Component\WebPageAction;
-use X\Model\Project;
 use X\Module\Web\Component\WebPageActionMenuTrait;
+use X\Model\Processor;
 use X\Model\Event;
 class Detail extends WebPageAction {
     /***/
@@ -13,13 +13,14 @@ class Detail extends WebPageAction {
      * @see \X\Service\XAction\Util\Action::runAction()
      */
     public function runAction( $id ) {
-        $project = Project::findOne(['id'=>$id]);
-        $events = Event::findAll(['project_id'=>$project->id]);
+        $processor = Processor::findOne(['id'=>$id]);
+        $event = Event::findOne(['id'=>$processor->event_id]);
         
-        $this->loadPublisherMenu($id);
-        $this->addParticle('Project/Detail', array(
-            'project' => $project,
-            'events' => $events,
+        $this->loadListenerMenu($processor->project_id);
+        
+        $this->addParticle('Processor/Detail', array(
+            'event' => $event,
+            'processor' => $processor,
         ), 'right');
     }
 }

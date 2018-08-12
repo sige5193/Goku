@@ -1,5 +1,5 @@
 <?php
-namespace X\Module\Web\Action;
+namespace X\Module\Web\Action\User;
 use X\Module\Web\Component\WebPageAction;
 use X\Model\User;
 class Register extends WebPageAction {
@@ -17,12 +17,12 @@ class Register extends WebPageAction {
         if ( null !== $form ) {
             try {
                 $this->registerNewUser($form);
-                return $this->gotoURL('index.php?module=web&action=login');
+                return $this->gotoURL('index.php?module=web&action=user\login');
             } catch ( \Exception $e ) {
                 $error = $e->getMessage();
             };
         }
-        $this->addParticle('Register', array(
+        $this->addParticle('User/Register', array(
             'error' => $error,
         ));
     }

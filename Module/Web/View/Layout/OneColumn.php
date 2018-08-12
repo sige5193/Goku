@@ -11,7 +11,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Michel &nbsp;<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="index.php?module=web&action=user/profile">Profile</a></li>
+              <li><a href="#">Profile</a></li>
               <li><a href="index.php?module=web&action=user/setting">Setting</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="index.php?module=web&action=user/logout">Logout</a></li>
@@ -25,10 +25,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-        <?php echo $this->getParticleViewManager()->toString('left'); ?>
       </div>
-      <div class="col-md-10">
-        <?php echo $this->getParticleViewManager()->toString('right'); ?>
+      <div class="col-md-8">
+        <?php echo $this->getParticleViewManager()->toString(); ?>
       </div>
     </div>
   </div>

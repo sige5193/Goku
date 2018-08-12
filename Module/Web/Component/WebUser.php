@@ -28,6 +28,9 @@ class WebUser {
     
     /** @return \X\Model\User */
     public function getUser() {
+        if ( null === $this->user ) {
+            $this->user = User::findOne(['id'=>$this->id]);
+        }
         return $this->user;
     }
     
@@ -62,11 +65,21 @@ class WebUser {
         );
     }
     
+    /**
+     * @return self
+     */
     public static function load() {
-        
+        if ( null === self::$webuser ) {
+            self::$webuser = new self();
+        }
+        return self::$webuser;
     }
     
+    /**
+     * @return void
+     */
     public function logout() {
-        
+        $_SESSION[self::SESSION_KEY] = null;
+        session_destroy();
     }
 }

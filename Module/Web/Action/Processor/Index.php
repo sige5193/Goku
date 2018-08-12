@@ -1,10 +1,10 @@
 <?php
-namespace X\Module\Web\Action\Project;
+namespace X\Module\Web\Action\Processor;
 use X\Module\Web\Component\WebPageAction;
-use X\Model\Project;
 use X\Module\Web\Component\WebPageActionMenuTrait;
-use X\Model\Event;
-class Detail extends WebPageAction {
+use X\Model\Processor;
+use X\Model\Project;
+class Index extends WebPageAction {
     /***/
     use WebPageActionMenuTrait;
     
@@ -14,12 +14,12 @@ class Detail extends WebPageAction {
      */
     public function runAction( $id ) {
         $project = Project::findOne(['id'=>$id]);
-        $events = Event::findAll(['project_id'=>$project->id]);
+        $processors = Processor::findAll(['project_id'=>$id]);
         
-        $this->loadPublisherMenu($id);
-        $this->addParticle('Project/Detail', array(
+        $this->loadListenerMenu($id);
+        $this->addParticle('Processor/Index', array(
             'project' => $project,
-            'events' => $events,
+            'processors' => $processors,
         ), 'right');
     }
 }

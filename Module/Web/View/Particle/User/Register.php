@@ -17,7 +17,7 @@ $error = $vars['error'];
         <?php echo Html::HTMLEncode($error); ?>
       </div>
       <?php endif; ?>
-      <form action="index.php?module=web&action=register" method="post">
+      <form action="index.php?module=web&action=user/register" method="post">
         <div class="form-group">
           <label>Email</label>
           <input type="email" class="form-control" name="form[email]">
@@ -30,7 +30,7 @@ $error = $vars['error'];
          <label>Repeat Password</label>
          <input type="password" class="form-control" name="form[password_repeat]">
        </div>
-       <a href="index.php?module=web&action=login" class="btn btn-default"> &lt;&lt; Login</a>
+       <a href="index.php?module=web&action=user/login" class="btn btn-default"> &lt;&lt; Login</a>
        <button type="submit" class="btn btn-default pull-right">Register</button>
      </form>
     </div>

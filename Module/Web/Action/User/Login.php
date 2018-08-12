@@ -1,5 +1,5 @@
 <?php
-namespace X\Module\Web\Action;
+namespace X\Module\Web\Action\User;
 use X\Module\Web\Component\WebPageAction;
 use X\Module\Web\Component\WebUser;
 class Login extends WebPageAction {
@@ -23,7 +23,7 @@ class Login extends WebPageAction {
             };
         }
         
-        $this->addParticle('Login', array(
+        $this->addParticle('User/Login', array(
             'error' => $error,
         ));
     }

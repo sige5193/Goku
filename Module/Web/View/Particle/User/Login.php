@@ -19,7 +19,7 @@ $error = $vars['error'];
       </div>
       <?php endif; ?>
       
-      <form method="post" action="index.php?module=web&action=login">
+      <form method="post" action="index.php?module=web&action=user/login">
         <div class="form-group">
           <label>Email</label>
           <input 
@@ -36,7 +36,7 @@ $error = $vars['error'];
             name="form[password]"
           >
         </div>
-        <a href="index.php?module=web&action=register" class="btn btn-default">Register &gt;&gt;</a>
+        <a href="index.php?module=web&action=user/register" class="btn btn-default">Register &gt;&gt;</a>
         <button type="submit" class="btn btn-default pull-right">Login</button>
       </form>
     </div>

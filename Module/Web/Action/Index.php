@@ -7,7 +7,6 @@ class Index extends WebPageAction {
      * @see \X\Service\XAction\Util\Action::runAction()
      */
     protected function runAction() {
-        $this->addParticle('PublisherMenu', array(), 'left');
-        $this->addParticle('Index', array(), 'right');
+        $this->gotoURL('index.php?module=web&action=project/index');
     }
 }

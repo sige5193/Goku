@@ -13,7 +13,7 @@ abstract class WebPageAction extends XWebPageAction {
      */
     protected function beforeRunAction() {
         if ( $this->loginRequired && WebUser::isGuest() ) {
-            return $this->gotoURL('/index.php?module=web&action=login');
+            return $this->gotoURL('/index.php?module=web&action=user/login');
         }
         
         $this->title = 'Goku';
