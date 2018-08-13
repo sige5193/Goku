@@ -29,6 +29,12 @@ abstract class WebPageAction extends XWebPageAction {
         $scripts = $this->getView()->getScriptManager();
         $scripts->add('jquery', 'https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js');
         $scripts->add('bootstrap', '/assets/lib/bootstrap/js/bootstrap.min.js');
+        
+        if ( !WebUser::isGuest() ) {
+            $this->addParticle('Header', array(
+                'user' => WebUser::load()->getUser()
+            ), 'top');
+        }
     }
     
     /**
