@@ -38,4 +38,21 @@ return array(
         ),
     ),
 ),
+'XError'=>array (
+    'enable' => true,
+    'class' => 'X\\Service\\XError\\Service',
+    'delay' => false,
+    'params' => array(
+        'types' => E_ALL,
+        'handlers' => array(
+            array(
+                'handler' => 'Url',
+                'url' => 'index.php?module=web&action=error500',
+                'parameters' => array(),
+                'gotoUrl' => true,
+                'method' => 'get',
+            ),
+        ),
+    ),
+),
 );
