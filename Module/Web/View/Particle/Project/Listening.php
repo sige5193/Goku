@@ -20,7 +20,7 @@ $listenList = $vars['listenList'];
       <td><?php echo Html::HTMLEncode($project->name); ?> </td>
       <td><?php echo Html::HTMLEncode($project->description); ?> </td>
       <td>
-        <a href="index.php?module=web&action=project/detail&id=<?php echo $project->id; ?>" 
+        <a href="index.php?module=web&action=processor/index&id=<?php echo $project->id; ?>" 
            class="btn btn-default btn-xs" 
         >Detail</a>
       </td>
