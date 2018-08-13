@@ -1,5 +1,6 @@
 <?php
 namespace X\Module\Web\Action\User;
+use X\Core\X;
 use X\Module\Web\Component\WebPageAction;
 use X\Model\User;
 class Register extends WebPageAction {
@@ -13,11 +14,15 @@ class Register extends WebPageAction {
      * @see \X\Service\XAction\Util\Action::runAction()
      */
     public function runAction( $form=null ) {
+        if ( !X::system()->getConfiguration()->get('params')->get('enableRegistion', true) ) {
+            throw new \Exception('Registion is not allowed');
+        }
+        
         $error = null;
         if ( null !== $form ) {
             try {
                 $this->registerNewUser($form);
-                return $this->gotoURL('index.php?module=web&action=user\login');
+                return $this->gotoURL('index.php?module=web&action=user/login');
             } catch ( \Exception $e ) {
                 $error = $e->getMessage();
             };
@@ -31,15 +36,13 @@ class Register extends WebPageAction {
      * @param unknown $userData
      */
     private function registerNewUser( $userData ) {
-        if ( empty($userData['password']) ) {
-            throw new \Exception('password can not be empty');
-        }
         if ( $userData['password'] !== $userData['password_repeat'] ) {
             throw new \Exception('password are not match');
         }
         
-        $isAdmin = (0 === User::find()->count()) ? 1 : 0;
+        User::validatePasswordStrength($userData['password']);
         
+        $isAdmin = (0 === User::find()->count()) ? 1 : 0;
         $user = new User();
         $user->is_admin = $isAdmin;
         $user->name = substr($userData['email'], 0, strpos($userData['email'], '@'));

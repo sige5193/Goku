@@ -1,4 +1,5 @@
 <?php 
+use X\Core\X;
 use X\Service\XAction\Component\WebView\Html;
 
 $vars = get_defined_vars();
@@ -36,7 +37,9 @@ $error = $vars['error'];
             name="form[password]"
           >
         </div>
+        <?php if ( X::system()->getConfiguration()->get('params')->get('enableRegistion', true) ): ?>
         <a href="index.php?module=web&action=user/register" class="btn btn-default">Register &gt;&gt;</a>
+        <?php endif; ?>
         <button type="submit" class="btn btn-default pull-right">Login</button>
       </form>
     </div>
