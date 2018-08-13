@@ -24,4 +24,13 @@ trait WebPageActionMenuTrait {
             'activedProject' => $activedProjectId,
         ), 'left');
     }
+    
+    /**
+     * @param unknown $activedItem
+     */
+    protected function loadAdminMenu( $activedItem ) {
+        $this->addParticle('Admin/Menu', array(
+            'activedItem' => $activedItem,
+        ), 'left');
+    }
 }

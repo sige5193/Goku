@@ -11,6 +11,9 @@ use X\Service\Database\ActiveRecord;
  * @property string $password
  */
 class User extends ActiveRecord {
+    const STATUS_OK = 0;
+    const STATUS_FREEZED = 1;
+    
     /**
      * {@inheritDoc}
      * @see \X\Service\Database\ActiveRecord::getDefination()

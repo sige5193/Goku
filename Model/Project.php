@@ -13,6 +13,9 @@ use X\Service\Database\ActiveRecord;
  * @property int $is_application_required
  */
 class Project extends ActiveRecord {
+    const STATUS_OK = 0;
+    const STATUS_FREEZED = 1;
+    
     /**
      * {@inheritDoc}
      * @see \X\Service\Database\ActiveRecord::getDefination()

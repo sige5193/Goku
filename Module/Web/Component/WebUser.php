@@ -53,6 +53,9 @@ class WebUser {
         if ( null === $user || !$user->isPasswordMatch($password) ) {
             throw new \Exception('user name or password error');
         }
+        if ( User::STATUS_FREEZED == $user->status ) {
+            throw new \Exception('user has been freezed.');
+        }
         
         if ( null === self::$webuser ) {
             self::$webuser = new self();
