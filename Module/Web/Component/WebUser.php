@@ -50,13 +50,15 @@ class WebUser {
      */
     public static function login( $email, $password ) {
         $user = User::findOne(['email'=>$email]);
-        if ( null === $user || !$user->isPasswordMatch($password) ) {
-            throw new \Exception('user name or password error');
-        }
         if ( User::STATUS_FREEZED == $user->status ) {
             throw new \Exception('user has been freezed.');
         }
-        
+        if ( User::STATUS_EMAIL_NOT_VERFIED == $user->status ) {
+            throw new \Exception('email address does not verfied');
+        }
+        if ( null === $user || !$user->isPasswordMatch($password) ) {
+            throw new \Exception('user name or password error');
+        }
         if ( null === self::$webuser ) {
             self::$webuser = new self();
         }

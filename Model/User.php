@@ -1,6 +1,7 @@
 <?php
 namespace X\Model;
 use X\Service\Database\ActiveRecord;
+use X\Service\Database\ActiveRecord\Attribute;
 /**
  * @property int $id
  * @property string $name
@@ -13,6 +14,7 @@ use X\Service\Database\ActiveRecord;
 class User extends ActiveRecord {
     const STATUS_OK = 0;
     const STATUS_FREEZED = 1;
+    const STATUS_EMAIL_NOT_VERFIED = 2;
     
     /**
      * {@inheritDoc}
@@ -24,10 +26,28 @@ class User extends ActiveRecord {
             'name'          => 'STRING NOT_NULL',
             'email'         => 'STRING NOT_NULL UNIQUE NOT_EMPTY',
             'is_admin'      => 'INT [0]',
-            'status'        => 'INT [0]',
+            'status'        => 'INT [2]',
             'registered_at' => 'DATETIME',
             'password'      => 'STRING',
         );
+    }
+    
+    /**
+     * {@inheritDoc}
+     * @see \X\Service\Database\ActiveRecord::init()
+     */
+    protected function init() {
+        $this->getAttr('email')->addValidator('email');
+    }
+    
+    /**
+     * @param User $user
+     * @param Attribute $email
+     */
+    public function validateEmail( User $user, Attribute $email ) {
+        if ( !filter_var($email->getValue(), FILTER_VALIDATE_EMAIL) ) {
+            $user->addError($email->getName(), 'email address is not available');
+        }
     }
     
     /**

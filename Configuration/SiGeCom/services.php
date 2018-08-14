@@ -55,4 +55,23 @@ return array(
         ),
     ),
 ),
+'XMail'=>array (
+    'enable' => true,
+    'class' => 'X\\Service\\XMail\\Service',
+    'delay' => true,
+    'params' => array(
+        'handlers' => array(
+            'emailVerification' => array(
+                'handler' => 'smtp',
+                'host' => 'smtp.163.com',
+                'port' => '25',
+                'from' => 'michaelluthor@163.com',
+                'from_name' => 'GoKu Email Verification',
+                'auth_required' => true,
+                'username' => 'michaelluthor@163.com',
+                'password' => '163mail1215',
+            ),
+        ),
+    ),
+),
 );
