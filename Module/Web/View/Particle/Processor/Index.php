@@ -20,6 +20,7 @@ $processors = $vars['processors'];
   <thead>
     <tr>
       <th>Name</th>
+      <th>Event</th>
       <th>Description</th>
       <th>Operations</th>
     </tr>
@@ -28,6 +29,7 @@ $processors = $vars['processors'];
     <?php foreach ( $processors as $processor ) : ?>
     <tr>
       <td><?php echo Html::HTMLEncode($processor->name); ?> </td>
+      <td><?php echo Html::HTMLEncode($processor->getEvent()->name); ?></td>
       <td><?php echo Html::HTMLEncode($processor->description); ?> </td>
       <td>
         <a href="index.php?module=web&action=processor/delete&id=<?php echo $processor->id; ?>"

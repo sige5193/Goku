@@ -23,8 +23,8 @@ class Project extends ActiveRecord {
     protected function getDefination() {
         return array(
             'id'            => 'INT PRIMARY_KEY AUTO_INCREASE NOT_NULL UNIQUE',
-            'name'          => 'STRING NOT_NULL',
-            'identifier'    => 'STRING NOT_NULL UNIQUE',
+            'name'          => 'STRING NOT_NULL NOT_EMPTY',
+            'identifier'    => 'STRING NOT_NULL NOT_EMPTY UNIQUE',
             'user_id'       => 'INT NOT_NULL',
             'status'        => 'INT [0]',
             'description'   => 'STRING',

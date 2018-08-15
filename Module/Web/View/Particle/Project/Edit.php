@@ -41,6 +41,7 @@ $project = $vars['project'];
       <span class="help-block"><?php echo Html::HTMLEncode($error); ?></span>
     <?php endforeach; ?>
   </div>
+  <!--  
   <div class="radio">
     <label>
       <input 
@@ -75,5 +76,6 @@ $project = $vars['project'];
       application required for registing processor 
     </label>
   </div>
+  -->
   <button type="submit" class="btn btn-default">Save</button>
 </form>

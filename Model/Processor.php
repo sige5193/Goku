@@ -42,6 +42,11 @@ class Processor extends ActiveRecord {
         return User::findOne(['id'=>$this->user_id]);
     }
     
+    /** @return \X\Model\Event */
+    public function getEvent() {
+        return Event::findOne(['id'=>$this->event_id]);
+    }
+    
     /**
      * @return string
      */
