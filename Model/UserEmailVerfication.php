@@ -2,7 +2,9 @@
 namespace X\Model;
 use X\Core\X;
 use X\Service\Database\ActiveRecord;
+use X\Service\XMail\Service as MailService;
 use X\Service\Database\ActiveRecord\Attribute;
+use X\Service\XAction\Component\WebView\Html;
 /**
  * @property int $id
  * @property int $uesr_id
@@ -10,6 +12,9 @@ use X\Service\Database\ActiveRecord\Attribute;
  * @property int $expired_at
  */
 class UserEmailVerfication extends ActiveRecord {
+    /** @var string */
+    public $verficationViewPath = null;
+    
     /**
      * {@inheritDoc}
      * @see \X\Service\Database\ActiveRecord::getDefination()
@@ -62,8 +67,33 @@ class UserEmailVerfication extends ActiveRecord {
      * @see \X\Service\Database\ActiveRecord::save()
      */
     public function save() {
+        $user = User::findOne(['id'=>$this->uesr_id]);
+        
         self::deleteAll(['uesr_id'=>$this->uesr_id]);
-        return parent::save();
+        $isSaved = parent::save();
+        if ( $isSaved ) {
+            $email = MailService::getService()->create('Goku Account Verfication');
+            $email->isHTML(true);
+            $email->addAddress($user->email);
+            $email->setHandler('emailVerification');
+            
+            $isHttps = X::system()->getConfiguration()->get('params')->get('enableHttps', false);
+            $verfyUrl = array();
+            $verfyUrl[] = $isHttps ? 'https://' : 'http://';
+            $verfyUrl[] = $_SERVER['HTTP_HOST'].'/';
+            $verfyUrl[] = 'index.php?module=web&action=user/verfyEmail';
+            $verfyUrl[] = '&code='.$this->code;
+            $verfyUrl = implode('', $verfyUrl);
+            $email->Body = Html::renderView($this->verficationViewPath, array(
+                'user' => $user,
+                'verfyUrl' => $verfyUrl,
+                'verfication' => $this,
+            ));
+            if ( !$email->send() ) {
+                throw new \Exception('email verfication send failed : '.$email->ErrorInfo);
+            }
+        }
+        return $isSaved;
     }
     
     /**

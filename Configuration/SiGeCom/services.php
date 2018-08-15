@@ -66,7 +66,7 @@ return array(
                 'host' => 'smtp.163.com',
                 'port' => '25',
                 'from' => 'michaelluthor@163.com',
-                'from_name' => 'GoKu Email Verification',
+                'from_name' => 'GoKu',
                 'auth_required' => true,
                 'username' => 'michaelluthor@163.com',
                 'password' => '163mail1215',

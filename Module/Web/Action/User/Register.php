@@ -3,9 +3,7 @@ namespace X\Module\Web\Action\User;
 use X\Core\X;
 use X\Module\Web\Component\WebPageAction;
 use X\Model\User;
-use X\Service\XMail\Service as MailService;
 use X\Model\UserEmailVerfication;
-use X\Service\XAction\Component\WebView\Html;
 class Register extends WebPageAction {
     /** @var boolean */
     protected $loginRequired = false;
@@ -62,31 +60,9 @@ class Register extends WebPageAction {
         
         $emailVerfication = new UserEmailVerfication();
         $emailVerfication->uesr_id = $user->id;
+        $emailVerfication->verficationViewPath = $this->getViewPathByName('User/EmailVerfication', 'Particle');
         if ( false === $emailVerfication->save() ) {
             throw new \Exception('unable to create email verfication');
-        }
-        
-        $email = MailService::getService()->create('Goku Account Verfication');
-        $email->isHTML(true);
-        $email->addAddress($user->email);
-        $email->setHandler('emailVerification');
-        
-        $isHttps = X::system()->getConfiguration()->get('params')->get('enableHttps', false);
-        $verfyUrl = array();
-        $verfyUrl[] = $isHttps ? 'https://' : 'http://';
-        $verfyUrl[] = $_SERVER['HTTP_HOST'].'/';
-        $verfyUrl[] = 'index.php?module=web&action=user/verfyEmail';
-        $verfyUrl[] = '&code='.$emailVerfication->code;
-        $verfyUrl = implode('', $verfyUrl);
-        
-        $verficationViewPath = $this->getViewPathByName('User/EmailVerfication', 'Particle');
-        $email->Body = Html::renderView($verficationViewPath, array(
-            'user' => $user,
-            'verfyUrl' => $verfyUrl,
-            'verfication' => $emailVerfication,
-        ));
-        if ( !$email->send() ) {
-            throw new \Exception('email verfication send failed : '.$email->ErrorInfo);
         }
     }
 }
