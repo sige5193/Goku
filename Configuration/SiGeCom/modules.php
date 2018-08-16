@@ -5,6 +5,11 @@ return array (
     'default' => true,
     'params' => array(),
 ),
+'Api' => array(
+    'enable' => true,
+    'default' => false,
+    'params' => array(),
+),
 // 'Admin' => array(
 //     'enable' => false,
 //     'default' => false,

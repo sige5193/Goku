@@ -37,7 +37,7 @@ return array(
             ),
         ),
     ),
-),
+),/*
 'XError'=>array (
     'enable' => true,
     'class' => 'X\\Service\\XError\\Service',
@@ -54,7 +54,7 @@ return array(
             ),
         ),
     ),
-),
+),*/
 'XMail'=>array (
     'enable' => true,
     'class' => 'X\\Service\\XMail\\Service',

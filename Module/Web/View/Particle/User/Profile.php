@@ -12,6 +12,25 @@ $isSuccssed = $vars['isSuccssed'];
   </div>
 <?php endif; ?>
 <form action="index.php?module=web&action=user/profile" method="post">
+  <div class="form-group">
+    <label>API Account Name</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      value="<?php echo Html::HTMLAttributeEncode($user->account_name); ?>"
+      disabled="disabled"
+    >
+  </div>
+  <div class="form-group">
+    <label>API Account Secret</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      value="<?php echo Html::HTMLAttributeEncode($user->account_secret); ?>"
+      disabled="disabled"
+    >
+  </div>
+  
   <div class="form-group <?php if($user->hasError('name')):?>has-error<?php endif;?>">
     <label>Name</label>
     <input 

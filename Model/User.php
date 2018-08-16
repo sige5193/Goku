@@ -10,6 +10,8 @@ use X\Service\Database\ActiveRecord\Attribute;
  * @property int $status
  * @property string $registered_at
  * @property string $password
+ * @property string $account_name
+ * @property string $account_secret
  */
 class User extends ActiveRecord {
     const STATUS_OK = 0;
@@ -29,6 +31,8 @@ class User extends ActiveRecord {
             'status'        => 'INT [2]',
             'registered_at' => 'DATETIME',
             'password'      => 'STRING',
+            'account_name'  => 'STRING',
+            'account_secret'=> 'STRING',
         );
     }
     
@@ -38,6 +42,26 @@ class User extends ActiveRecord {
      */
     protected function init() {
         $this->getAttr('email')->addValidator('email');
+        $this->getAttr('account_name')->setValueBuilder(array($this, 'generateAccountName'));
+        $this->getAttr('account_secret')->setValueBuilder(array($this, 'generateAccountsecret'));
+    }
+    
+    /**
+     * @param User $user
+     * @param Attribute $accountName
+     * @return string
+     */
+    public function generateAccountName ( User $user, Attribute $accountName ) {
+        return md5(uniqid(mt_rand(), true));
+    }
+    
+    /**
+     * @param User $user
+     * @param Attribute $accountName
+     * @return string
+     */
+    public function generateAccountsecret ( User $user, Attribute $accountName ) {
+        return md5(uniqid(mt_rand(), true));
     }
     
     /**
