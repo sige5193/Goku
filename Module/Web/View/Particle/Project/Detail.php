@@ -42,21 +42,33 @@ $events = $vars['events'];
         <?php endif; ?>
       </td>
       <td>
-        <a href="index.php?module=web&action=event/edit&project=<?php echo $project->id?>&id=<?php echo $event->id;?>" 
-           class="btn btn-default btn-xs"
-        >Edit</a>
-        <a href="index.php?module=web&action=event/delete&id=<?php echo $event->id; ?>" 
-           class="btn btn-default btn-xs"
-        >Delete</a>
-        <?php if ( 0 == $event->status ) : ?>
-        <a href="index.php?module=web&action=event/disable&id=<?php echo $event->id; ?>" 
-           class="btn btn-default btn-xs"
-        >Disable</a>
-        <?php else : ?>
-        <a href="index.php?module=web&action=event/enable&id=<?php echo $event->id; ?>" 
-           class="btn btn-default btn-xs"
-        >Enabled</a>
-        <?php endif; ?>
+        <div class="btn-group">
+          <a href="#" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="index.php?module=web&action=event/trigger&id=<?php echo $event->id; ?>" 
+              >Trigger</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+            <?php if ( 0 == $event->status ) : ?>
+            <a href="index.php?module=web&action=event/disable&id=<?php echo $event->id; ?>" 
+            >Disable</a>
+            <?php else : ?>
+            <a href="index.php?module=web&action=event/enable&id=<?php echo $event->id; ?>" 
+            >Enabled</a>
+            <?php endif; ?>
+            </li>
+            <li>
+              <a href="index.php?module=web&action=event/edit&project=<?php echo $project->id?>&id=<?php echo $event->id;?>" 
+              >Edit</a>
+            </li>
+            <li>
+              <a href="index.php?module=web&action=event/delete&id=<?php echo $event->id; ?>" 
+              >Delete</a>
+            </li>
+          </ul>
+        </div>
         <a href="index.php?module=web&action=event/history&id=<?php echo $event->id; ?>" 
            class="btn btn-default btn-xs"
         >History</a>
