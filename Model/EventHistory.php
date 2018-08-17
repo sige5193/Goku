@@ -22,10 +22,10 @@ class EventHistory extends ActiveRecord {
             'event_id'      => 'INT NOT_NULL',
             'trigged_at'    => 'STRING NOT_NULL',
             'started_at'    => 'STRING NOT_NULL',
-            'ended_at'      => 'STRING NOT_NULL',
-            'summary'       => 'STRING NOT_NULL',
+            'ended_at'      => 'STRING NOT_NULL [----]',
+            'summary'       => 'STRING NOT_NULL []',
             'parameters'    => 'STRING NOT_NULL',
-            'duration'      => 'INT NOT_NULL',
+            'duration'      => 'INT NOT_NULL [-1]',
         );
     }
     

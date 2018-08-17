@@ -11,6 +11,9 @@ use X\Service\Database\ActiveRecord;
  * @property int $duration
  */
 class ProcessorHistory extends ActiveRecord {
+    /** Status value for success */
+    const STATUS_SUCCESS = 0;
+    
     /**
      * {@inheritDoc}
      * @see \X\Service\Database\ActiveRecord::getDefination()
