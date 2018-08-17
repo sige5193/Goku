@@ -10,6 +10,11 @@ return array (
     'default' => false,
     'params' => array(),
 ),
+'Cmd' => array(
+    'enable' => true,
+    'default' => false,
+    'params' => array(),
+),
 // 'Admin' => array(
 //     'enable' => false,
 //     'default' => false,
